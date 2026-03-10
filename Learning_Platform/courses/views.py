@@ -32,12 +32,12 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_update(self, serializer):
-        if self.request.user != serializer.instance.instructor:
+        if self.request.user.id != serializer.instance.instructor.id:
             raise PermissionDenied("You can only edit your own courses.")
         serializer.save()
 
     def perform_destroy(self, instance):
-        if self.request.user != instance.instructor:
+        if self.request.user.id != instance.instructor.id:
             raise PermissionDenied("You can only delete your own courses.")
         instance.delete()
     
