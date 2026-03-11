@@ -1,2 +1,9 @@
 venv/
 .env
+__pycache__/
+*.pyc
+*.sqlite3
+media/
+Learning_Platform/media/
+Learning_Platform/db.sqlite3
+.DS_Store
